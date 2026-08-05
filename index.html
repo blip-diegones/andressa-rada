@@ -11,12 +11,11 @@
 
   <style>
     /* ==========================================================================
-       VARIABLES & BASE SETUP (PALETA AJUSTADA: MENOS BRANCO, MAIS ACONCHEGO)
+       VARIABLES & BASE SETUP
        ========================================================================== */
     :root {
-      /* Ajuste dos fundos para tons quentes e suaves */
-      --sand-50:  #EFECE6; /* Fundo principal suave (areia fosco) */
-      --sand-100: #E5DFC5; /* Fundo secundário (areia aquecido) */
+      --sand-50:  #EFECE6;
+      --sand-100: #E5DFC5;
       --sand-200: #D8CEB3;
       --sand-300: #C2B392;
       
@@ -30,8 +29,8 @@
       --ink-soft: #383633;
       --ink-muted: #6B6863;
 
-      --white: #F9F8F5; /* Substituído o branco puro #FFF por off-white descanso visual */
-      --glass-bg: rgba(239, 236, 230, 0.92);
+      --white: #F9F8F5;
+      --glass-bg: rgba(239, 236, 230, 0.95);
       --glass-border: rgba(184, 146, 116, 0.25);
 
       --font-display: 'Cormorant Garamond', Georgia, serif;
@@ -153,15 +152,17 @@
       color: var(--white);
     }
 
+    /* HEADER COM TRANSIÇÃO EM FADE */
     header {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       z-index: 100;
-      transition: background var(--transition-fast), padding var(--transition-fast), border-color var(--transition-fast);
       padding: 1.8rem 4vw;
       border-bottom: 1px solid transparent;
+      opacity: 1;
+      transition: opacity 0.4s ease, background-color 0.4s ease, padding 0.4s ease, border-color 0.4s ease;
     }
 
     header.scrolled {
@@ -170,6 +171,18 @@
       -webkit-backdrop-filter: blur(12px);
       padding: 1.1rem 4vw;
       border-bottom-color: var(--glass-border);
+      animation: fadeInHeader 0.5s ease forwards;
+    }
+
+    @keyframes fadeInHeader {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .header-inner {
@@ -469,6 +482,11 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
+      transition: color var(--transition-fast);
+    }
+
+    .service-card:hover .service-more {
+      color: var(--clay-700);
     }
 
     .ambiente {
@@ -784,12 +802,11 @@
       </ul>
     </nav>
     <div class="nav-links">
-      <a href="https://wa.me/5500000000000" class="btn btn-outline">Agendar Consulta</a>
+      <a href="https://wa.me/5500000000000?text=Ol%C3%A1,%20vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20consulta." target="_blank" class="btn btn-outline">Agendar Consulta</a>
     </div>
   </div>
 </header>
 
-<!-- HERO: Foto da Sala de Espera/Lounge com sofás terracota e teto de gesso aquecido -->
 <section class="hero" id="hero">
   <div class="hero-bg">
     <img src="images/recepcao.jpg" alt="Lounge e recepção da Clínica Andressa Rada">
@@ -799,7 +816,7 @@
     <h1>Onde a ciência da pele encontra a <em>delicadeza</em> do seu olhar.</h1>
     <p class="hero-sub">Tratamentos personalizados e procedimentos estéticos focados no rejuvenescimento natural, segurança e bem-estar.</p>
     <div class="hero-cta">
-      <a href="https://wa.me/5500000000000" class="btn btn-primary">Agendar sua Avaliação</a>
+      <a href="https://wa.me/5500000000000?text=Ol%C3%A1,%20vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" class="btn btn-primary">Agendar sua Avaliação</a>
       <a href="#procedimentos" class="btn btn-outline">Conhecer Procedimentos</a>
     </div>
   </div>
@@ -812,7 +829,6 @@
   </div>
 </section>
 
-<!-- STATEMENT: Foto da Fachada Frontal (Logo AR na parede de pedra/estuque) -->
 <div class="statement">
   <div class="statement-img">
     <img src="images/fachada.jpg" alt="Fachada frontal com logo da Clínica Andressa Rada">
@@ -834,50 +850,64 @@
     </div>
 
     <div class="service-grid stagger">
+      <!-- Card 01: Harmonização Facial -->
       <div class="service-card reveal">
-        <span class="service-num">01</span>
-        <div class="service-rule"></div>
-        <h3>Harmonização Facial</h3>
-        <p>Preenchimentos estratégicos e reestruturação para promover simetria e rejuvenescimento harmônico.</p>
-        <span class="service-more">Saiba mais &rarr;</span>
+        <div>
+          <span class="service-num">01</span>
+          <div class="service-rule"></div>
+          <h3>Harmonização Facial</h3>
+          <p>Preenchimentos estratégicos e reestruturação para promover simetria e rejuvenescimento harmônico.</p>
+        </div>
+        <a href="https://wa.me/5500000000000?text=Ol%C3%A1,%20vim%20pelo%20site%20e%20gostaria%20de%20fazer%20Harmoniza%C3%A7%C3%A3o%20Facial." target="_blank" class="service-more">Agendar Procedimento &rarr;</a>
       </div>
 
+      <!-- Card 02: Bioestimuladores -->
       <div class="service-card reveal">
-        <span class="service-num">02</span>
-        <div class="service-rule"></div>
-        <h3>Bioestimuladores de Colágeno</h3>
-        <p>Estímulo profundo e contínuo para restaurar a firmeza, elasticidade e textura da pele.</p>
-        <span class="service-more">Saiba mais &rarr;</span>
+        <div>
+          <span class="service-num">02</span>
+          <div class="service-rule"></div>
+          <h3>Bioestimuladores de Colágeno</h3>
+          <p>Estímulo profundo e contínuo para restaurar a firmeza, elasticidade e textura da pele.</p>
+        </div>
+        <a href="https://wa.me/5500000000000?text=Ol%C3%A1,%20vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20Bioestimuladores%20de%20Col%C3%A1geno." target="_blank" class="service-more">Agendar Procedimento &rarr;</a>
       </div>
 
+      <!-- Card 03: Toxina Botulínica -->
       <div class="service-card reveal">
-        <span class="service-num">03</span>
-        <div class="service-rule"></div>
-        <h3>Toxina Botulínica</h3>
-        <p>Prevenção e suavização de linhas de expressão mantendo a leveza e naturalidade do rosto.</p>
-        <span class="service-more">Saiba mais &rarr;</span>
+        <div>
+          <span class="service-num">03</span>
+          <div class="service-rule"></div>
+          <h3>Toxina Botulínica</h3>
+          <p>Prevenção e suavização de linhas de expressão mantendo a leveza e naturalidade do rosto.</p>
+        </div>
+        <a href="https://wa.me/5500000000000?text=Ol%C3%A1,%20vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20Toxina%20Botul%C3%ADnica." target="_blank" class="service-more">Agendar Procedimento &rarr;</a>
       </div>
 
+      <!-- Card 04: Tecnologias de Luz & Laser -->
       <div class="service-card reveal">
-        <span class="service-num">04</span>
-        <div class="service-rule"></div>
-        <h3>Tecnologias de Luz & Laser</h3>
-        <p>Tratamentos avançados para manchas, poros, cicatrizes e renovação celular da pele.</p>
-        <span class="service-more">Saiba mais &rarr;</span>
+        <div>
+          <span class="service-num">04</span>
+          <div class="service-rule"></div>
+          <h3>Tecnologias de Luz & Laser</h3>
+          <p>Tratamentos avançados para manchas, poros, cicatrizes e renovação celular da pele.</p>
+        </div>
+        <a href="https://wa.me/5500000000000?text=Ol%C3%A1,%20vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20Tecnologias%20de%20Luz%20%26%20Laser." target="_blank" class="service-more">Agendar Procedimento &rarr;</a>
       </div>
 
+      <!-- Card 05: Protocolos Corporais -->
       <div class="service-card reveal">
-        <span class="service-num">05</span>
-        <div class="service-rule"></div>
-        <h3>Protocolos Corporais</h3>
-        <p>Abordagens personalizadas para remodelação, tratamento de gordura localizada e flacidez.</p>
-        <span class="service-more">Saiba mais &rarr;</span>
+        <div>
+          <span class="service-num">05</span>
+          <div class="service-rule"></div>
+          <h3>Protocolos Corporais</h3>
+          <p>Abordagens personalizadas para remodelação, tratamento de gordura localizada e flacidez.</p>
+        </div>
+        <a href="https://wa.me/5500000000000?text=Ol%C3%A1,%20vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20Protocolos%20Corporais." target="_blank" class="service-more">Agendar Procedimento &rarr;</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- GALERIA EDITORIAL: Fotos da Entrada Lateral e do Consultório Clínico Interno -->
 <section class="ambiente" id="clinica">
   <div class="section-inner">
     <div class="section-head reveal">
@@ -942,7 +972,7 @@
     <h2>Pronta para vivenciar sua melhor versão?</h2>
     <p style="color:var(--ink-soft); margin-top:12px; font-size:16px;">Entre em contato com a nossa equipe para alinhar suas expectativas e agendar um horário exclusivo.</p>
     <div style="margin-top:32px;">
-      <a href="https://wa.me/5500000000000" class="btn btn-primary">Falar no WhatsApp</a>
+      <a href="https://wa.me/5500000000000?text=Ol%C3%A1,%20vim%20pelo%20site%20e%20gostaria%20de%20agendar%20um%20hor%C3%A1rio." target="_blank" class="btn btn-primary">Falar no WhatsApp</a>
     </div>
     <div class="final-cta-meta">
       <span>Atendimento por Hora Marcada</span>
@@ -990,7 +1020,7 @@
   </div>
 </footer>
 
-<a href="https://wa.me/5500000000000" class="wa-float" aria-label="Contato via WhatsApp">
+<a href="https://wa.me/5500000000000?text=Ol%C3%A1,%20vim%20pelo%20site%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida." target="_blank" class="wa-float" aria-label="Contato via WhatsApp">
   <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
     <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
   </svg>
@@ -1003,7 +1033,7 @@
 
   const header = document.getElementById('siteHeader');
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
+    if (window.scrollY > 60) {
       header.classList.add('scrolled');
     } else {
       header.classList.remove('scrolled');
