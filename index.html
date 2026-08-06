@@ -241,6 +241,13 @@
       color: var(--ink-muted);
     }
 
+    /* Oculta o subtítulo do logo em telas menores para não sobrepor o hero */
+    @media (max-width: 768px) {
+      .logo-word span {
+        display: none;
+      }
+    }
+
     nav ul {
       display: flex;
       list-style: none;
@@ -278,7 +285,7 @@
       min-height: 100vh;
       display: flex;
       align-items: center;
-      padding: 120px 4vw 80px;
+      padding: 140px 4vw 80px;
       overflow: hidden;
       background-color: var(--ink-dark);
     }
@@ -809,6 +816,24 @@
     }
 
     @media (max-width: 640px) {
+      header {
+        padding: 1.2rem 4vw;
+      }
+
+      .hero {
+        padding-top: 160px;
+      }
+
+      .hero-content {
+        margin-left: 0;
+      }
+
+      .eyebrow {
+        font-size: 0.7rem;
+        letter-spacing: 0.15em;
+        margin-bottom: 0.5rem;
+      }
+
       .hero-slats { display: none; }
       .hero-cta { flex-direction: column; }
       .proof-stats-row { grid-template-columns: 1fr; gap: 2rem; }
